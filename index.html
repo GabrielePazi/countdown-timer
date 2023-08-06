@@ -17,13 +17,13 @@
 
       <div class="card bg-dark config-container">
         <div class="card-body d-flex" v-if="active == ''">
-            <input type="range" class="form-range vertical-range" min="0" max="59" id="customRange3" v-model="minutesConfig">
+            <input type="range" class="form-range vertical-range" min="0" max="59" id="customRange3" v-model="minutes">
 
             <div class="d-flex align-items-center">
               <div class="color-orange">
                 <div class="display-3 fw-semibold">
-                  <span v-if="minutesConfig < 10">0</span>
-                  <span>{{minutesConfig}}</span>
+                  <span v-if="minutes < 10">0</span>
+                  <span>{{minutes}}</span>
                 </div>
               </div>
   
@@ -31,13 +31,13 @@
   
               <div class="color-orange">
                 <div class="display-3 fw-semibold">
-                  <span v-if="secondsConfig < 10">0</span>
-                  <span>{{secondsConfig}}</span>
+                  <span v-if="seconds < 10">0</span>
+                  <span>{{seconds}}</span>
                 </div>
               </div>
             </div>
 
-            <input type="range" class="form-range vertical-range" min="0" max="59" id="customRange3" v-model="secondsConfig">
+            <input type="range" class="form-range vertical-range" min="0" max="59" id="customRange3" v-model="seconds">
         </div>
 
         <div class="card-body bg-dark d-flex align-items-center justify-content-center" v-if="active == 'timer'">

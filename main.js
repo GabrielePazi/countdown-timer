@@ -4,12 +4,10 @@
 const app = Vue.createApp({
   data() {
     return {
-      minutesConfig: 0,
-      secondsConfig: 0,
+      minutes: 0,
+      seconds: 0,
       timeInMs: 0,
       active: "",
-      minutes: 0, 
-      seconds: 0,
       interval: "",
       timeOut: "",
       btnControlTag: "pause"
@@ -17,13 +15,10 @@ const app = Vue.createApp({
   },
   methods: {
     createTimer() {
-      this.seconds = this.secondsConfig
-      this.minutes = this.minutesConfig
-
       this.active = "timer";
       this.btnControlTag = "pause"
 
-      this.timeInMs = this.secToMs(this.secondsConfig) + this.minToSec(this.minutesConfig);
+      this.timeInMs = this.secToMs(this.seconds) + this.minToSec(this.minutes);
 
       this.setTimer()
     },
@@ -32,7 +27,7 @@ const app = Vue.createApp({
         this.timeInMs -= 1000;
 
         this.seconds = (this.timeInMs / 1000)% 60
-        this.miutes = Math.floor((this.timeInMs / 1000)/60)
+        this.minutes = Math.floor((this.timeInMs / 1000)/60)
       }, 1000);
 
       this.timeOut = setTimeout(() => {
@@ -51,8 +46,8 @@ const app = Vue.createApp({
       clearInterval(this.interval);
       clearTimeout(this.timeOut)
       this.active = "";
-      this.minutesConfig = 0;
-      this.secondsConfig = 0;
+      this.minutes = 0;
+      this.seconds = 0;
     },
     stopTimer() {
       clearInterval(this.interval);
@@ -61,7 +56,6 @@ const app = Vue.createApp({
     }, 
     resumeTimer() {
       this.btnControlTag = "pause"
-
       this.setTimer()
     }
   }
